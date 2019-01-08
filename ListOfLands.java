@@ -24,7 +24,6 @@ public class ListOfLands{
 		Estate e1 = new Estate(brown,"Pho Co",60,3,brown.getHouseprice(),1);
 		Estate e2 = new Estate(skyblue, "Buu Dien Ha Noi", 100, 6,skyblue.getHouseprice(),5);   
 		Estate e3 = new Estate(pink,"Quang truong ba dinh",140,10,pink.getHouseprice(),7);
-		Estate e4 = new Estate(pink,"Van Mieu", 160,12,pink.getHouseprice(),8);
 		Estate e5 = new Estate(orange,"Trang An",200,16,orange.getHouseprice(),11);
 		Estate e6 = new Estate(red,"Hoi An",240, 20,red.getHouseprice(),13);
 		Estate e7 = new Estate(yellow,"Dinh Doc Lap",260,22,yellow.getHouseprice(),15);
@@ -44,10 +43,10 @@ public class ListOfLands{
 		Ultility u1 = new Ultility("Electric Company",8);
 		Ultility u2 = new Ultility("Water Factory",20);
 		//Community Chest And Lucky 
-		CALCards c1 = new CALCards(2);
-		CALCards c2 = new CALCards(10);
-		CALCards c3 = new CALCards(14);
-		CALCards c4 = new CALCards(21);
+		CALCards c1 = new CALCards("Lucky",2);
+		CALCards c2 = new CALCards("Community Chest",10);
+		CALCards c3 = new CALCards("Lucky",14);
+		CALCards c4 = new CALCards("Community Chest",21);
 		
 		//Other Lands
 		OtherLands ol1 = new OtherLands("GO",200,0);
@@ -59,7 +58,6 @@ public class ListOfLands{
 		listoflands.add(e2);
 		listoflands.add(e1);
 		listoflands.add(e3);
-		listoflands.add(e4);
 		listoflands.add(e5);
 		listoflands.add(e6);
 		listoflands.add(e7);
