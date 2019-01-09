@@ -25,9 +25,9 @@ public class ListOfUltility {
 	public void add(Ultility u){
 		listofu.add(u);
 	}
-	public void remove(Estate e){
-		if(listofu.contains(e)){
-			listofu.remove(e);
+	public void remove(Ultility u){
+		if(listofu.contains(u)){
+			listofu.remove(u);
 		}
 		else{
 			System.out.println("It's not in the list.");
