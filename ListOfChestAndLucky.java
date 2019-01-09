@@ -19,9 +19,9 @@ public class ListOfChestAndLucky {
 	public ArrayList<CALCards> getList(){
 		return listofcal;
 	}
-	public void remove(Station s){
-		if(listofcal.contains(s)){
-			listofcal.remove(s);
+	public void remove(CALCards c){
+		if(listofcal.contains(c)){
+			listofcal.remove(c);
 		}
 		else{
 			System.out.println("It's not in the list.");
