@@ -2,6 +2,7 @@ package Monopoly.system;
 
 public class Test {
 
+	
 	/**
 	 * @param args
 	 */
@@ -17,42 +18,46 @@ public class Test {
 
 
 //		list.Sorting();
-		Account a1 = new Account("NecoPotts",1600,0);
-		Account a2 = new Account("Duyen",1600,0);
-		MoneyAmount m1 = new MoneyAmount(a1);
-		MoneyAmount m2 = new MoneyAmount(a2);
-//		CALCards callist = new CALCards(3);
-//		
-//		m1.ChestAndLucky(callist.random());
-		
-	//	System.out.println(m1.getFreeJailCard());
-
-//		System.out.println(list.Size());
-		Dices d = new Dices();
-		DicesSystem ds1 = new DicesSystem(d,m1,list);
-		DicesSystem ds2 = new DicesSystem(d,m2,list);
-//		for(int i = 0 ; i < 5; i++){
-//			ds.action();
-//		}
+	
 		ListOfAccount listofacc = new ListOfAccount();
-		listofacc.Add(a1, m1);
-		listofacc.Add(a2, m2);
-//		Jail jail = new Jail(24);
-//		jail.getJail(m1);
-//		ds2.RollTurn();
-//		listofacc.checklistTurn();
-//		ds2.RollTurn();
-//		jail.getOutJail(m1);
-//		ds1.RollTurn();
-//		ds1.RollTurn();
-		Estate l1 = (Estate) list.Search("bitexco");
-		m1.Buy(l1);
-		m1.UpgradeHouse(l1);
-		m1.UpgradeHouse(l1);
-		m1.UpgradeHouse(l1);
-		m1.UpgradeHouse(l1);
-		m1.UpgradeHouse(l1);
-		System.out.println(m1.DisplayList());
+	
+		Account a1 = new Account("NecoPotts", 1500);
+		Account a2 = new Account("Duyen",1500);
+		MoneyAmount ma1 = new MoneyAmount(a1);
+		MoneyAmount ma2 = new MoneyAmount(a2);
+		
+		listofacc.add(a1,ma1);
+		listofacc.add(a2,ma2);
+		
+		things t = new things(listofacc,list);
+	//	list.DisplayPos();
+	//	System.out.println(t1.getListoflands().getListofs().getList().get(4).toString());
+//		ListOfStation listofs = new ListOfStation();
+//		ListOfEstate listofe = new ListOfEstate();
+
+		list.DisplayPos();
+		
+//		System.out.println(t.Buy(ma1, 16));
+//		System.out.println(t.Buy(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		System.out.println(t.UpgradeHouse(ma1, 5));
+//		
+//		System.out.println(t.PayRent(ma2, 5));
+//		System.out.println(ma2.getMoney());
+//		System.out.println(t.doAction(ma2, 0));
+		
+		Dices d = new Dices();
+		DicesSystem ds = new DicesSystem(d,ma1,list);
+		System.out.println(ds.RollTurn());
+		System.out.println(list.getList().get(8).getName());
+	
+	//	list.getListofu().Display();
+		//System.out.println(list.getListofu().getUltility(8));
+		
 	}
 
 }
