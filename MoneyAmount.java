@@ -1,5 +1,6 @@
-package Monopoly.system;
+package Monopoly;
 import java.util.ArrayList;
+
 
 
 public class MoneyAmount implements Comparable<MoneyAmount>{
@@ -18,6 +19,7 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 		this.a = a;
 		Money = a.getMoney();
 		totalMoney = a.getMoney();
+	
 	//	Display(a);
 	}
 	public String getName(){
@@ -72,6 +74,7 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 	public void setPosition(int position){
 		this.position = position;
 	}
+
 	public String Buy(Estate e){
 		// check if it is available 
 		int c = checkAvailable(e);
@@ -79,7 +82,6 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 		if(c == 1){
 			// do the buy function
 			Money -= e.BuyPrice();
-			totalMoney -= e.BuyPrice();
 //			System.out.println(String.format("---> %s just bought %s with %d$",a.getName(),e.getName(),e.GetPrice()));
 			Display();
 			// Add to the owning list 
@@ -88,7 +90,7 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 			return String.format("---> %s just bought %s with %d$",a.getName(),e.getName(),e.GetPrice());
 		}
 		else if(c == 0){
-//			System.out.println(String.format("---> %s cant buy %s",a.getName(),e.getName()));
+//			System.out.println(StrOwningList.add(e);ing.format("---> %s cant buy %s",a.getName(),e.getName()));
 			return String.format("---> %s cant buy %s",a.getName(),e.getName());
 		}
 		turn = 1;
@@ -107,8 +109,7 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 			++NoOwnStation;
 		//	a.x = x;
 			// Do the subtract
-			Money -= - s.BuyPrice();
-			totalMoney -= s.BuyPrice();
+			Money -=  s.BuyPrice();
 //			System.out.println(String.format("---> %s just bought %s with %d$",a.getName(),s.getName(),s.BuyPrice()));
 			Display();
 			// add to the owning list
@@ -137,7 +138,6 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 			//	a.y = y;
 				// do the subtract
 				Money = Money - u.BuyPrice();
-				totalMoney -= u.BuyPrice();
 				//System.out.println(String.format("---> %s just bought %s with %d$",a.getName(),u.getName(),u.BuyPrice()));
 				Display();
 				// add to the list
@@ -165,7 +165,6 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 			Money += e.Mortage();
 			// increase the debt
 			debt -= e.TakeOutMortage();
-			totalMoney += e.TakeOutMortage() - e.Mortage();
 		//	System.out.println(String.format("--->%s just sell %s to the bank with %d$. Can take it out with %d$",a.getName(),e.getName(),e.Mortage(),e.TakeOutMortage()));
 			Display();
 			turn = 1;
@@ -174,7 +173,7 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 		else if(c == 1){
 		//	System.out.println(String.format("--->%s can't sell %s to the bank",a.getName(),e.toString(),e.Mortage()));
 			turn = 1;
-			return String.format("--->%s can't sell %s to the bank",a.getName(),e.toString(),e.Mortage());
+			return String.format("--->%s can't sell %s to the bank",a.getName(),e.getName(),e.Mortage());
 		}
 		turn = 1;
 		} catch(Exception ex){
@@ -184,59 +183,8 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 		return "Can't sell to the bank";
 		
 	}
-//	public String Mortgage(Station s){
-//		int c = checkAvailable(s);
-//		try{
-//		if(c == 0){
-//			// decrease the own station to decrease the rent price
-//			--NoOwnStation;
-//			Money += s.Mortage();
-//			debt -= s.TakeOutMortage();
-//			totalMoney += s.TakeOutMortage() - s.Mortage();
-//			//System.out.println(String.format("--->%s just sell %s to the bank with %d$. Can take it out with %d$",a.getName(),s.toString(),s.Mortage(),s.TakeOutMortage()));
-//			Display();
-//			turn = 1;
-//			return String.format("--->%s just sell %s to the bank with %d$. Can take it out with %d$",a.getName(),s.toString(),s.Mortage(),s.TakeOutMortage());
-//		}
-//		else{
-//		//	System.out.println(String.format("--->%s can't sell %s to the bank ",a.getName(),s.toString()));
-//			turn = 1;
-//			return String.format("--->%s can't sell %s to the bank ",a.getName(),s.toString());
-//		}
-//	//	turn = 1;
-//		}catch(Exception ex){
-//			//System.out.println(String.format("Error %s.Can't sell",ex));
-//			return String.format("Error %s.Can't sell",ex);
-//		}
-//		
-//	}
-//	public String Mortgage(Ultility u){
-//		int c = checkAvailable(u);
-//		try{
-//			if(c == 0){
-//				--NoOwnUltility;
-//				Money = Money + u.Mortage();
-//				debt -= u.TakeOutMortage();
-//				totalMoney += u.TakeOutMortage() - u.Mortage();
-//			//	System.out.println(String.format("--->%s just sell %s to the bank with %d$. Can take it out with %d$",a.getName(),u.getName(),u.Mortage(),u.TakeOutMortage()));
-//			//	System.out.println("a  " + NoOwnStation + " b  " + x);
-//				Display();
-//				turn = 1;
-//				return String.format("--->%s just sell %s to the bank with %d$. Can take it out with %d$",a.getName(),u.getName(),u.Mortage(),u.TakeOutMortage());
-//				}
-//			else{
-//			//	System.out.println(String.format("--->%s just sell %s to the bank",a.getName(),u.getName()));
-//				turn = 1;
-//				return String.format("--->%s just sell %s to the bank",a.getName(),u.getName());
-//				
-//				}
-//		} catch(Exception e){
-//		//	System.out.println(String.format("Error %s.Can't sell",e));
-//			return String.format("Error %s.Can't sell",e);
-//		}
-//		
-//	}
-	public void PayRent(MoneyAmount b,Estate l){
+
+	public String PayRent(MoneyAmount b,Estate l){
 		int c = checkAvailable(l);
 		if(c == 0){
 			// check if this list doesnt have that estate
@@ -248,20 +196,23 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 				// add money of another account
 				b.Money += x;
 				b.totalMoney += x;
-				System.out.println(String.format("%s is standing in %s have to pay rent for %s with %d$",a.getName(),l.getName(),b.toString(),x));
-				Display();
-				b.Display();
+				turn = 1;
+				//System.out.println(String.format("%s is standing in %s have to pay rent for %s with %d$",a.getName(),l.getName(),b.toString(),x));
+				return String.format("%s is standing in %s have to pay rent for %s with %d$\n",a.getName(),l.getName(),b.getName(),x);
 			}
 			else{
-				System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				turn = 1;
+	//			System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				return String.format("%s is owning this, don't have to pay rent", a.getName());
 			}
-			turn = 1;
+			
 		}
 		else{
-			System.out.println("Noone owns this, don't have to pay rent");
+			//System.out.println("Noone owns this, don't have to pay rent");
+			return "Noone owns this, don't have to pay rent";
 		}
 	}
-	public void PayRent(MoneyAmount b,Station s){
+	public String PayRent(MoneyAmount b,Station s){
 		int c = checkAvailable(s);
 		if(c == 0){
 			if(OwningList.contains(s) == false && b.OwningList.contains(s)){
@@ -270,22 +221,23 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 				totalMoney -= x;
 				b.Money += x;
 				b.totalMoney += x;
-				System.out.println(String.format("%s has %d stations, %s is standing in %s have to pay rent for %s with %d$",b.toString(),b.NoOwnStation,a.getName(),s.toString(),b.toString(),x));
-				Display();
-				b.Display();
-				
+		//		System.out.println(String.format("%s has %d stations, %s is standing in %s have to pay rent for %s with %d$",b.toString(),b.NoOwnStation,a.getName(),s.toString(),b.toString(),x));
+				turn = 1;
+				return String.format("%s has %d stations, %s is standing in %s have to pay rent for %s with %d$",b.getName(),b.NoOwnStation,a.getName(),s.getName(),b.getName(),x);
 			}
 			else{
-				System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				turn = 1;
+			//	System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				return String.format("%s is owning this, don't have to pay rent", a.getName());
 			}
-			turn = 1;
 		}
 		else{
-			System.out.println("Noone owns this, don't have to pay rent");
+		//	System.out.println("Noone owns this, don't have to pay rent");
+			return "Noone owns this, don't have to pay rent";
 		}
 				
 	}
-	public void PayRent(MoneyAmount b ,Ultility u){
+	public String PayRent(MoneyAmount b ,Ultility u){
 		int c = checkAvailable(u);
 		if(c == 0){
 			if(OwningList.contains(u) != true && b.OwningList.contains(u)){
@@ -294,63 +246,69 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 				totalMoney -= x;
 				b.Money += x;
 				b.totalMoney += x;
-				
-				System.out.println(String.format("%s has %d ultilities, %s is standing in %s have to pay rent for %s with %d$",b.toString(),b.NoOwnUltility,a.getName(),u.getName(),b.toString(),x));
-				Display();
-				b.Display();
+				turn = 1;
+				//System.out.println(String.format("%s has %d ultilities, %s is standing in %s have to pay rent for %s with %d$",b.toString(),b.NoOwnUltility,a.getName(),u.getName(),b.toString(),x));
+				return String.format("%s has %d ultilities, %s is standing in %s have to pay rent for %s with %d$",b.getName(),b.NoOwnUltility,a.getName(),u.getName(),b.getName(),x);
 			}
 			else{
-				System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				//System.out.println(String.format("%s is owning this, don't have to pay rent", a.getName()));
+				turn = 1;
+				return String.format("%s is owning this, don't have to pay rent", a.getName());
 			}
-			turn = 1;
+	
 		}
 		else{
-			System.out.println("Noone owns this, don't have to pay rent");
+			//System.out.println("Noone owns this, don't have to pay rent");
+			return "Noone owns this, don't have to pay rent";
 		}
 				
 	}
-	public void UpgradeHouse(Estate l){
+	public String UpgradeHouse(Estate l){
 		// check the level of the house
 		if(l.checklevel() < 5){
 			if(OwningList.contains(l)){
 				l.checklevel();
 				Money = Money - l.getHousePrice();
-				totalMoney -= l.getHousePrice();
 				l.setLevel(l.getLevel()+1);
-				System.out.println(String.format("--->%s just upgrade house for %s with %d$\n\t%s is now level %d, rent price =%d$",a.getName(),l.getName(),l.getHousePrice(),l.getName(),l.checklevel(),l.RentHousePrice()));
+				turn = 1;
+				//System.out.println(String.format("--->%s just upgrade house for %s with %d$\n\t%s is now level %d, rent price =%d$",a.getName(),l.getName(),l.getHousePrice(),l.getName(),l.checklevel(),l.RentHousePrice()));
+				
 				// build hotel
 				if(l.checklevel() == 5){
 						l.setLevel(l.getLevel()+1);
-						System.out.println(String.format("--->%s has a Hotel now",l.getName()));
-
-					
+						turn = 1;
+					//	System.out.println(String.format("--->%s has a Hotel now",l.getName()));
+						
 				}
-				Display();
+				return String.format("--->%s just upgrade house for %s with %d$\n\t%s is now level %d, rent price =%d$",a.getName(),l.getName(),l.getHousePrice(),l.getName(),l.checklevel(),l.RentHousePrice());
 			}
 			else{
-				System.out.println(String.format("%s is not belong to %s", l.getName() , a.getName()));
+				//System.out.println(String.format("%s is not belong to %s", l.getName() , a.getName()));
+				return String.format("%s is not belong to %s", l.getName() , a.getName());
 			}
-			turn = 1;
 		}
 		
 		
 		else {
 			l.checklevel();
-			System.out.println(String.format("Cannot upgrade %s more",l.getName()));
+		//	System.out.println(String.format("Cannot upgrade %s more",l.getName()));
+			return String.format("Cannot upgrade %s more",l.getName());
 		}
 	}
-	public void PayMortgage(Property p){
+	public String PayMortgage(Property p){
 		if(OwningList.contains(p)){
 			Money -= p.TakeOutMortage();
 			debt += p.TakeOutMortage();
-			totalMoney -= p.TakeOutMortage() - p.Mortage();
-			System.out.println(String.format("--->%s just take back his/her %s from the bank with %d$",a.getName(),p.getName(),p.TakeOutMortage()));
-			Display();
+			turn = 1;
+		//	System.out.println(String.format("--->%s just take back his/her %s from the bank with %d$",a.getName(),p.getName(),p.TakeOutMortage()));
+			return String.format("--->%s just take back his/her %s from the bank with %d$",a.getName(),p.getName(),p.TakeOutMortage());
 		}
 		else{
-			System.out.println(String.format("--->%s is not belong to %s",p.getName(),a.getName()));
+			turn = 1;
+			//System.out.println(String.format("--->%s is not belong to %s",p.getName(),a.getName()));
+			return String.format("--->%s is not belong to %s",p.getName(),a.getName());
 		}
-		turn = 1;
+
 	}
 	public int checkAvailable(Property p){
 		if(p.Available == 0 ){
@@ -366,15 +324,15 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 	//	System.out.println(String.format("Account: %s\tCurrent Money= %d$\tDebt= %d$", a.getName(),Money,debt));
 		return String.format("Account: %s\tCurrent Money= %d$\tDebt= %d$", a.getName(),Money,debt);
 	}
-	public String DisplayList(){
+	public void DisplayList(){
 		System.out.printf("----------%s----------\n",a.getName());
 		for(int i = 0; i < OwningList.size();i++){
-		//	System.out.println(OwningList.get(i)); 
+			System.out.println(OwningList.get(i)); 
 			Property p = OwningList.get(i);
 			
-			return p.toString();
+			//return p.toString();
 		}
-		return "nothing in the list";
+		//return "nothing in the list";
 	}
 	public String  JailFee(){
 		// pay the fee jail with 500
@@ -406,21 +364,21 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 	
 	//	turn = 1;
 	}
-	public String ChestAndLucky(ChestAndLucky cal){
+	public String ChestAndLucky(CALCards cal){
 		// receive a lucky or community chest card
-		System.out.println(String.format("%s just received %s", a.getName() , cal.getName()));
-	//	return String.format("%s just received %s", a.getName() , cal.getName());
+		ChestAndLucky c = cal.Random();
+		//System.out.println(String.format("%s just received %s", a.getName() , c.getName()));
 		// receive the free jail card
-		if(cal.getValue() == 1){
+		if(c.getValue() == 1){
 			FreeJailCard++;
 		}
 		else{
 		
-			Money += cal.getValue();
-			totalMoney += cal.getValue();
+			Money += c.getValue();
+			totalMoney += c.getValue();
 		}
 		turn = 1;
-		return String.format("%s just received %s", a.getName() , cal.getName());
+		return String.format("%s just received %s", a.getName() , c.getName());
 	}
 	public int Bankrupt(){
 		if(totalMoney < debt){
@@ -439,3 +397,4 @@ public class MoneyAmount implements Comparable<MoneyAmount>{
 		return nextMA.gettotalMoney()-totalMoney;
 	}
 }
+
