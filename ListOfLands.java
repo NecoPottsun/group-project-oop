@@ -1,4 +1,4 @@
-package Monopoly.system;
+package monopoly;
 
 import java.util.ArrayList;
 import java.util.Collections;
