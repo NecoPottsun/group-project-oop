@@ -22,9 +22,12 @@ public class ListOfOtherLands {
 	public ArrayList<OtherLands> getList(){
 		return listofol;
 	}
-	public void remove(Station s){
-		if(listofol.contains(s)){
-			listofol.remove(s);
+	public void add(OtherLands ol){
+		listofol.add(ol);
+	}
+	public void remove(OtherLands ol){
+		if(listofol.contains(ol)){
+			listofol.remove(ol);
 		}
 		else{
 			System.out.println("It's not in the list.");
