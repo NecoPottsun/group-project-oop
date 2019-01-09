@@ -104,31 +104,36 @@ public class DicesSystem {
 		int x = d.checkDices();
 		return x;
 	}
-	public void RollTurn(){
+	public String RollTurn(){
 		if(ma.getTurn() == 0){
-			System.out.println(String.format("-------%s's turn------",ma.getName()));
+			//System.out.println(String.format("-------%s's turn------",ma.getName()));
 			if(ma.getisonJail() == false){
 				d.RollDice();
-				System.out.println(String.format("---> %s go %d steps",ma.getName(),d.Sum()));
+			//	System.out.println(String.format("---> %s go %d steps",ma.getName(),d.Sum()));
+			
 				Action();
 				ma.setTurn(1);
+				return String.format("%s\n---> %s go %d steps",d.Display(),ma.getName(),d.Sum());
 			}
 			else{
 				d.RollDice();
 				if(d.checkDices() == 1){
 					ma.setTurn(0);
 					ma.setIsonJail(false);
-					System.out.println(String.format("%s just out of jail", ma.getName()));
+			//		System.out.println(String.format("%s just out of jail", ma.getName()));
+					return String.format("%s just out of jail", ma.getName());
 					
 				}
 				else{
 					ma.setTurn(1);
-					System.out.println(String.format("%s have to wait to the next turn",ma.getName()));
+			//		System.out.println(String.format("%s have to wait to the next turn",ma.getName()));
+					return String.format("%s have to wait to the next turn",ma.getName());
 				}
 			}
 		}
 		else{
-			System.out.println(String.format("----->It's not %s's turn",ma.getName()));
+		//	System.out.println(String.format("----->It's not %s's turn",ma.getName()));
+			return String.format("----->It's not %s's turn",ma.getName());
 		}
 	}
 	public void checkTotal(){
