@@ -1,85 +1,75 @@
 package Monopoly.system;
 
+import java.util.ArrayList;
+import java.util.Collections;
 
-import java.util.*;
+
 public class ListOfLands{
 	private ArrayList<Lands> listoflands = new ArrayList<Lands>();
-	private Color brown,skyblue,pink,orange,red,yellow,green,blue;
-	private Estate e1,e2,e3,e4,e5,e6,e7,e8,e9,e10,e11,e12,e13,e14,e15,e16,e17,e18,e19,e20;
-	private Station s1,s2,s3,s4;
-	private OtherLands ol1,ol2,ol3;
 	private Jail jail;
-	
+	private ListOfEstate listofe;
+	private ListOfStation listofs;
+	private ListOfChestAndLucky listofc;
+	private ListOfOtherLands listofol;
+	private ListOfUltility listofu;
 	public ListOfLands(){
-		Color brown = new Color("Brown",50);
-		Color skyblue = new Color("Sky blue", 50);
-		Color pink = new Color("Pink",100);
-		Color orange = new Color("Orange", 100);
-		Color red = new Color("Red",150);
-		Color yellow = new Color("Yellow",150);
-		Color green = new Color("Green", 200);
-		Color blue = new Color("Blue",250);
+		listofe = new ListOfEstate();
 		
-		// Estate's constructor Color,name,price,rent price,house price, position
-		Estate e1 = new Estate(brown,"Pho Co",60,3,brown.getHouseprice(),1);
-		Estate e2 = new Estate(skyblue, "Buu Dien Ha Noi", 100, 6,skyblue.getHouseprice(),5);   
-		Estate e3 = new Estate(pink,"Quang truong ba dinh",140,10,pink.getHouseprice(),7);
-		Estate e5 = new Estate(orange,"Trang An",200,16,orange.getHouseprice(),11);
-		Estate e6 = new Estate(red,"Hoi An",240, 20,red.getHouseprice(),13);
-		Estate e7 = new Estate(yellow,"Dinh Doc Lap",260,22,yellow.getHouseprice(),15);
-		Estate e8 = new Estate(yellow,"Nha tho Duc Ba",260,22,yellow.getHouseprice(),17);
-	//	Estate e19 = new Estate(green,"Duong Nguyen Hue", 300,26,green.getHouseprice(),20);
-		Estate e9 = new Estate(green,"Bitexco", 320,28,green.getHouseprice(),19);
-		Estate e10 = new Estate(blue,"Truong Sa",350,35,blue.getHouseprice(),24);
-	
-		// Station's constructor name , position
-		Station s1 = new Station("Ha Noi station", 4);
-		Station s2 = new Station("Vinh station",9);
-		Station s3 = new Station("Da Nang station",16);
-		Station s4 = new Station("Sai Gon station",22);
+		for(int i = 0; i < listofe.getList().size() ; i++){
+			listoflands.add(listofe.getList().get(i));
+		}
 		
+		listofs = new ListOfStation();
 		
-		// Ultility
-		Ultility u1 = new Ultility("Electric Company",8);
-		Ultility u2 = new Ultility("Water Factory",20);
-		//Community Chest And Lucky 
-		CALCards c1 = new CALCards("Lucky",2);
-		CALCards c2 = new CALCards("Community Chest",10);
-		CALCards c3 = new CALCards("Lucky",14);
-		CALCards c4 = new CALCards("Community Chest",21);
+		for(int i = 0; i < listofs.getList().size(); i++){
+			listoflands.add(listofs.getList().get(i));
+		}
 		
-		//Other Lands
-		OtherLands ol1 = new OtherLands("GO",200,0);
-		OtherLands ol2 = new OtherLands("Visiting Jail",0,6);
-		OtherLands ol3 = new OtherLands("Parking", 0, 12);	
-		Jail jail = new Jail(18);
+		listofc = new ListOfChestAndLucky();
 		
+		for(int i = 0; i < listofc.getList().size() ; i++){
+			listoflands.add(listofc.getList().get(i));
+		}
 		
-		listoflands.add(e2);
-		listoflands.add(e1);
-		listoflands.add(e3);
-		listoflands.add(e5);
-		listoflands.add(e6);
-		listoflands.add(e7);
-		listoflands.add(e8);
-		listoflands.add(e9);
-		listoflands.add(e10);
-		listoflands.add(s1);
-		listoflands.add(s2);
-		listoflands.add(s3);
-		listoflands.add(s4);
-		listoflands.add(u1);
-		listoflands.add(u2);
-		listoflands.add(c1);
-		listoflands.add(c2);
-		listoflands.add(c3);
-		listoflands.add(c4);
-		listoflands.add(ol1);
-		listoflands.add(ol2);
-		listoflands.add(ol3);
+		listofol = new ListOfOtherLands();
+		
+		for(int i = 0; i < listofol.getList().size();i++){
+			listoflands.add(listofol.getList().get(i));
+		}
+		
+		listofu = new ListOfUltility();
+		
+		for(int i = 0; i < listofu.getList().size();i++){
+			listoflands.add(listofu.getList().get(i));
+		}
+		
+		jail = new Jail(18);
 		listoflands.add(jail);
-		Sorting();
 
+		Sorting(); 
+	}
+	public ArrayList<Lands> getList(){
+		return listoflands;
+	}
+
+	public Jail getJail() {
+		return jail;
+	}
+	public ListOfEstate getListofe() {
+		return listofe;
+	}
+	public ListOfStation getListofs() {
+		return listofs;
+	}
+	public ListOfChestAndLucky getListofc() {
+		return listofc;
+	}
+	public ListOfOtherLands getListofol() {
+		return listofol;
+	}
+
+	public ListOfUltility getListofu() {
+		return listofu;
 	}
 	public void add(Lands l){
 		listoflands.add(l);
@@ -107,9 +97,7 @@ public class ListOfLands{
 		}
 		return null;
 	}
-//	public Lands SearchJail(){
-//		return Search(jail);
-//	}
+
 	public int Size(){
 		return listoflands.size();
 	}
@@ -124,10 +112,25 @@ public class ListOfLands{
 		return null;
 		
 	}
+	public void DisplayPos(){
+		for(int i = 0; i < listoflands.size();i++){
+			System.out.println(String.format("%s\tPosition = %d",listoflands.get(i).getName(),listoflands.get(i).getPosition()));
+		}
+	}
 	public void Sorting(){
 		// Sorting position's lands ascending
 		Collections.sort(listoflands);
 		//DisplayLands();
+	}
+	public Lands getLands(int x){
+		for(int i = 0 ; i < listoflands.size(); i ++){
+			int pos = listoflands.get(i).getPosition();
+			if(pos == x){
+				return listoflands.get(i);
+			}
+			
+		}
+		return null;
 	}
 
 }
