@@ -1,4 +1,3 @@
-package Monopoly.system;
 import java.util.*;
 public class CALCards extends Lands{
 	ArrayList<ChestAndLucky> list = new ArrayList<ChestAndLucky>();
@@ -42,7 +41,7 @@ public class CALCards extends Lands{
 	public String Display(){
 		for(int i = 0 ; i < list.size(); i++){
 			ChestAndLucky cal = list.get(i);
-			return String.format("%d\t%s",(i+1),cal.getName());
+			return String.format("%d\t%s",(i),cal.getName());
 		}
 		return null;
 	}
