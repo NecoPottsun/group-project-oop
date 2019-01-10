@@ -1,7 +1,7 @@
 package Monopoly.system;
 
 public class DicesSystem {
-	private Dices d,d1,d2;
+	private Dices d;
 	private MoneyAmount ma;
 	private ListOfLands LandList;
 	private int Count = 0;
@@ -41,7 +41,6 @@ public class DicesSystem {
 		getLand();
 		// check if the dices roll 3 times have the same faces 
 		if(y == 1){
-		//	jail.getJail(ma);
 			ma.setIsonJail(true);
 		}
 
